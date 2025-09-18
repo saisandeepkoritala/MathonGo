@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   const [data, setData] = useState(null);
   const [theme, setTheme] = useState("light"); // light/dark mode
-  const myRank = 73;
+  const myRank = 72;
 
   const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
@@ -44,7 +44,7 @@ function App() {
     <div className={`leaderboard ${theme}`}>
       <button
         onClick={toggleTheme}
-        style={{ margin: "1rem", padding: "6px 12px" }}
+        className="btn"
       >
         Switch to {theme === "light" ? "Dark" : "Light"} Mode
       </button>

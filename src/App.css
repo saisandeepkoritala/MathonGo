@@ -95,6 +95,13 @@ h1 {
   width: 100%;
 }
 
+.btn{
+   margin: 1rem;
+   padding: 12px;
+   border:2px solid var(--bg-color);
+   border-radius: 10px;
+}
+
 /* ========== TOP 3 CARDS ========== */
 .top-three .leaderboard-card {
   display: flex;
@@ -184,6 +191,16 @@ h1 {
   justify-content: center;
 }
 
+.rank-1 .details{
+  background: linear-gradient(to bottom, transparent var(--rank1-gradient) 100%, transparent 0%);
+} 
+.rank-2 .details{
+  background: linear-gradient(to bottom, transparent var(--rank2-gradient) 100%, transparent 0%);
+}
+.rank-3 .details{
+  background: linear-gradient(to bottom, transparent var(--rank3-gradient) 100%, transparent 0%);
+}
+
 /* ===== Score Section ===== */
 .details .score {
   display: flex;
@@ -264,6 +281,7 @@ h1 {
   gap: 10px;
   margin-left: 5px;
 }
+
 .top-three .rank-1 {
   background: var(--rank1-bg);
   border-top: 2px solid var(--rank1-border);
@@ -341,6 +359,9 @@ h1 {
   right: 0;
   background: linear-gradient(to bottom, var(--rank3-gradient) 0%, transparent 100%);
 }
+
+
+
 
 /* ========== TABLE ========== */
 .leaderboard-table {
@@ -468,6 +489,7 @@ h1 {
 .pagination button.active {
   font-weight: bold;
   background: var(--pagination-active);
+  color: #fff;
 }
 
 .pagination button:disabled {
@@ -481,4 +503,24 @@ h1 {
   align-items: center;
   justify-content: center;
   padding: 4px 8px;
+}
+
+
+
+/* myRow.css */
+.my-row {
+  background-color: #fffae6;
+  font-weight: bold;
+}
+
+.my-row .student-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.my-row .student-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
