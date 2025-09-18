@@ -1,0 +1,217 @@
+/* ===============================
+   Top 3 Leaderboard Styles
+   =============================== */
+
+/* Container */
+.top-three {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Buttons */
+.btn {
+  margin: 1rem;
+  padding: 12px;
+  border: 2px solid var(--button-border);
+  border-radius: 10px;
+}
+
+/* Leaderboard Card */
+.top-three .leaderboard-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  min-width: 250px;
+  margin: 10px;
+  padding: 15px;
+  gap: 10px;
+  border-radius: 16px;
+}
+
+/* Card Content */
+.card {
+  width: 100%;
+  min-height: 200px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 100;
+}
+
+/* Profile Image */
+.profile img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Name & Rank */
+.name {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: var(--text-color)
+}
+
+.rank1,
+.rank2,
+.rank3,
+.rank4 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Details Section */
+.details {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: var(--text-color);
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.details > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Gradient Backgrounds */
+.rank-1 .details {
+  background: linear-gradient(to bottom, transparent 100%, var(--rank1-bg) 50%);
+}
+
+.rank-2 .details {
+  background: linear-gradient(to bottom, transparent 100%, var(--rank2-bg) 50%);
+}
+
+.rank-3 .details {
+  background: linear-gradient(to bottom, transparent 100%, var(--rank3-bg) 50%);
+}
+.rank-4 .details {
+  background: linear-gradient(to bottom, transparent 100%, var(--rank4-bg) 50%);
+}
+
+
+
+
+
+/* ===== Rank Decorations ===== */
+.top-three .rank-1,
+.top-three .rank-2,
+.top-three .rank-3,
+.top-three .rank-4 {
+  position: relative;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.top-three .rank-1 {
+  background: var(--rank1-bg);
+  border-color: var(--rank1-border);
+}
+
+.top-three .rank-2 {
+  background: var(--rank2-bg);
+  border-color: var(--rank2-border);
+}
+
+.top-three .rank-3 {
+  background: var(--rank3-bg);
+  border-color: var(--rank3-border);
+}
+.top-three .rank-4 {
+  background: var(--rank4-bg);
+  border-color: var(--rank4-border);
+}
+
+/* Rank Borders */
+.top-three .rank-1::before,
+.top-three .rank-1::after,
+.top-three .rank-2::before,
+.top-three .rank-2::after,
+.top-three .rank-3::before,
+.top-three .rank-3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+.top-three .rank-1::before,
+.top-three .rank-2::before,
+.top-three .rank-3::before {
+  left: 0;
+}
+
+.top-three .rank-1::after,
+.top-three .rank-2::after,
+.top-three .rank-3::after {
+  right: 0;
+}
+
+.top-three .rank-1::before,
+.top-three .rank-1::after {
+  background: linear-gradient(to bottom, var(--rank1-gradient) 0%, transparent 100%);
+}
+
+.top-three .rank-2::before,
+.top-three .rank-2::after {
+  background: linear-gradient(to bottom, var(--rank2-gradient) 0%, transparent 100%);
+}
+
+.top-three .rank-3::before,
+.top-three .rank-3::after {
+  background: linear-gradient(to bottom, var(--rank3-gradient) 0%, transparent 100%);
+}
+
+/* ===============================
+   Leaderboard Table
+   =============================== */
+
+.leaderboard-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px var(--card-shadow);
+  table-layout: fixed;
+}
+
+.leaderboard-table th {
+  color: var(--text-color);
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 13px;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.leaderboard-table tbody tr:nth-child(odd) {
+  background-color: var(--table-row-odd);
+}
+
+.leaderboard-table tbody tr:nth-child(even) {
+  background-color: var(--table-row-even);
+}

@@ -41,21 +41,25 @@ function App() {
   const others = data.slice(3);
 
   return (
-    <div className={`leaderboard ${theme}`}>
-      <button
-        onClick={toggleTheme}
-        className="btn"
-      >
-        Switch to {theme === "light" ? "Dark" : "Light"} Mode
-      </button>
+  <div className={`leaderboard ${theme}`} style={{ 
+      backgroundColor: `var(--background)`, 
+      color: `var(--foreground)` 
+  }}>
+    <button
+      onClick={toggleTheme}
+      className="btn"
+    >
+      Switch to {theme === "light" ? "Dark" : "Light"} Mode
+    </button>
 
-      <div className="top-three">
-        <TopThreeLeaderBoard topThree={topThree} getOrdinal={getOrdinal} theme={theme} />
-      </div>
-
-      <TableBody others={others} myRank={myRank} theme={theme} />
+    <div className="top-three">
+      <TopThreeLeaderBoard topThree={topThree} getOrdinal={getOrdinal} theme={theme} />
     </div>
-  );
+
+    <TableBody others={others} myRank={myRank} theme={theme} />
+  </div>
+);
+
 }
 
 export default App;

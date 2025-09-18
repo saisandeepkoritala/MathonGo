@@ -1,3 +1,4 @@
+import "./Pagination.css";
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const handlePageClick = (page) => onPageChange(page);
   const handlePrev = () => currentPage > 1 && onPageChange(currentPage - 1);

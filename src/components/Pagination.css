@@ -1,0 +1,37 @@
+/* ========== Pagination ========== */
+.pagination {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--pagination-bg);
+  border-top: 1px solid var(--border-color);
+}
+
+.pagination button {
+  border: none;
+  border-radius: 50%;
+  padding: 4px 8px;
+  cursor: pointer;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.pagination button.active {
+  font-weight: bold;
+  background: var(--pagination-active);
+  color: var(--pagination-active-text);
+}
+
+.pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.pagination span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+}

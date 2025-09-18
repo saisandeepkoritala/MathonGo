@@ -1,0 +1,28 @@
+
+.details .accuracy {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+
+}
+
+.details .accuracy >div{
+  width:100%;
+}
+
+.details .accuracy .accuracy-line {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  gap:5px;
+}
+
+.details .accuracy .accuracy-value{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}

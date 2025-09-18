@@ -1,3 +1,4 @@
+import "./MyRow.css";
 
 const renderMyRow = (myItem) => (
   <tr className="my-row">
