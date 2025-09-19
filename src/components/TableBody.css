@@ -13,7 +13,7 @@
 
 .leaderboard-table th {
   background-color: var(--header-bg);    /* Sky blue header */
-  color: var(--text-color);               /* Hardcoded text color */
+  color: var(--text-color);              /* Text color */
   font-weight: 600;
   text-transform: capitalize;
   font-size: 14px;
@@ -25,7 +25,7 @@
 .leaderboard-table td {
   padding: 8px 12px;
   text-align: left;
-  border-bottom: 1px solid var(--border-color); /* Hardcoded border */
+  border-bottom: 1px solid var(--border-color); /* Border */
 }
 
 .leaderboard-table tbody tr:nth-child(odd) {
@@ -45,7 +45,7 @@
   z-index: 10;
 }
 
-/* Responsive wrapper */
+/* Responsive wrapper (for large screens, just horizontal scroll if needed) */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
@@ -54,43 +54,24 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* Mobile card view */
-@media (max-width: 480px) {
-  .leaderboard-table,
-  .leaderboard-table thead,
-  .leaderboard-table tbody,
-  .leaderboard-table th,
-  .leaderboard-table td,
-  .leaderboard-table tr {
-    display: block;
-    width: 100%;
-  }
 
+
+
+.student-card {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background:var(--colrowcolor);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-size: 14px;
+  font-family: Poppins, sans-serif;
 }
-/* 
-  .leaderboard-table thead {
-    display: none;
-  } */
-/* 
-  .leaderboard-table tr {
-    background: #ffffff; 
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    padding: 12px;
-  }
 
-  .leaderboard-table td {
-    display: flex;
-    justify-content: space-between;
-    padding: 6px 0;
-    border: none;
-    font-size: 14px;
-  }
-
-  .leaderboard-table td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    color: var(--text-color); 
-  }
-} */
+.student-card h4 {
+  margin-bottom: 0.5rem;
+  color: var(--colheadercolor);
+}
+.student-card p {
+  margin: 4px 0;
+  color: var(--colheadercolor);
+}

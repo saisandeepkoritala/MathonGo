@@ -6,7 +6,7 @@ const Score = ({ item }) => {
             <div className="score-line">
                 <div className="score-name">
                     <div className="icon">
-                        <Checks size={18} weight="duotone" />
+                        <Checks size={18} />
                     </div>
                     <div className="score-text">
                         <p>Overall Score</p>

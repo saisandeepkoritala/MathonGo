@@ -3,6 +3,7 @@ import TableBodyRows from "./TableBodyRows";
 import renderMyRow from "./MyRow";
 import Pagination from "./Pagination";
 import "./TableBody.css";
+import DesktopStickyRow from "./DesktopStickyRow";
 
 const TableBody = ({ others, myRank }) => {
   const rowsPerPage = 10;
@@ -10,6 +11,7 @@ const TableBody = ({ others, myRank }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [atBottom, setAtBottom] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
 
   const myItem = others.find((item) => item.rank === myRank);
   const totalPages = Math.ceil(others.length / rowsPerPage);
@@ -41,13 +43,17 @@ const TableBody = ({ others, myRank }) => {
     return () => table.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const myVisibleOnPage = currentRows.some((r) => r.rank === myRank);
-  const shouldRenderSticky = myItem && currentPage !== myPage;
+  // Track screen resize for mobile check
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 767);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div style={{ position: "relative" }}>
       {/* Table wrapper */}
-      <div ref={tableRef} style={{ maxHeight: "400px", overflowY: "auto" }} className="table-responsive">
+      <div ref={tableRef} className="table-responsive">
         <table className="leaderboard-table">
           <colgroup>
             <col style={{ width: "8%" }} />
@@ -58,10 +64,16 @@ const TableBody = ({ others, myRank }) => {
             <col style={{ width: "10%" }} />
             <col style={{ width: "12%" }} />
           </colgroup>
-
           <thead>
-            <tr style={{ color: `var(--text-color)`, backgroundColor: `#f5f9fe`, borderRadius: "16px",fontSize: "12px",fontFamily: "Poppins, sans-serif" }}>
-      
+            <tr
+              style={{
+                color: `var(--colheadercolor)`,
+                backgroundColor: `#f5f9fe`,
+                borderRadius: "16px",
+                fontSize: "12px",
+                fontFamily: "Poppins, sans-serif",
+              }}
+            >
               <th>Rank</th>
               <th>Student</th>
               <th>Overall Score</th>
@@ -71,43 +83,41 @@ const TableBody = ({ others, myRank }) => {
               <th>Accuracy</th>
             </tr>
           </thead>
-
           <TableBodyRows currentRows={currentRows} />
         </table>
-
-        {/* Sticky row at bottom while scrolling */}
-        {shouldRenderSticky && !myVisibleOnPage && !atBottom && (
-          <div className="sticky-row-overlay">
-            <table className="leaderboard-table">
-              <tbody>{renderMyRow(myItem)}</tbody>
-            </table>
-          </div>
-        )}
+        <DesktopStickyRow isMobile shouldRenderSticky myVisibleOnPage atBottom renderMyRow myItem />
       </div>
-
-      {/* Pagination and sticky row below it when scrolled to bottom */}
-      {atBottom && shouldRenderSticky && !myVisibleOnPage && (
-        <>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageClick}
-          />
-          <div className="row-below-pagination">
-            <table className="leaderboard-table">
-              <tbody>{renderMyRow(myItem)}</tbody>
-            </table>
-          </div>
-        </>
+            
+      {atBottom && (
+          <Pagination  currentPage={currentPage}  totalPages={totalPages} 
+          onPageChange={handlePageClick} />
       )}
+      <div className="row-below-pagination">
+        <table className="leaderboard-table">
+          <colgroup>
+            <col style={{ width: "8%" }} />
+            <col style={{ width: "28%" }} />
+            <col style={{ width: "12%" }} />
+            <col style={{ width: "10%" }} />
+            <col style={{ width: "10%" }} />
+            <col style={{ width: "10%" }} />
+            <col style={{ width: "12%" }} />
+          </colgroup>
+          <tbody>{renderMyRow(myItem)}</tbody>
+        </table>
+    </div>
 
-      {/* Show pagination normally if at bottom but my row is already on page */}
-      {atBottom && myVisibleOnPage && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageClick}
-        />
+      {/* Mobile view → Student Info Card */}
+      {isMobile && myItem && (
+        <div className="student-card">
+          <h4>{myItem.student}</h4>
+          <p><strong>Rank:</strong> {myItem.rank}</p>
+          <p><strong>Overall Score:</strong> {myItem.totalMarkScored}</p>
+          <p><strong>Physics:</strong> {myItem.subjects[1].totalMarkScored}</p>
+          <p><strong>Chemistry:</strong> {myItem.subjects[2].totalMarkScored}</p>
+          <p><strong>Maths:</strong> {myItem.subjects[0].totalMarkScored}</p>
+          <p><strong>Accuracy:</strong> {myItem.accuracy}%</p>
+        </div>
       )}
     </div>
   );

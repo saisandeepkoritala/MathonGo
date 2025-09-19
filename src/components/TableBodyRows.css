@@ -44,30 +44,43 @@ td {
 .my-row td:nth-child(4),
 .my-row td:nth-child(5),
 .my-row td:nth-child(6) { width: 10%; } /* Subjects */
+/*  Mobile adjustments */
 
-/* Mobile adjustments */
+
+
 @media (max-width: 480px) {
   .my-row {
-    background-color: var(--highlight-bg);
-    border: 2px solid #ffd54d;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-left: 1rem;
     margin-bottom: 1rem;
     padding: 12px;
     position: relative;
     top: auto;
   }
 
-  .my-row td {
+  .table-responsive .sticky-row-overlay .leaderboard-table .my-row,
+  .row-below-pagination .leaderboard-table .my-row{
+    display: none;
+    width:300px;
+  }
+
+  .table-responsive .sticky-row-overlay .leaderboard-table .my-row :not(.student-info),
+  .row-below-pagination .leaderboard-table .my-row :not(.student-info){
+    display: none
+  }
+
+  /* .my-row td {
     display: flex;
     justify-content: space-between;
     padding: 6px 0;
     border: none;
+    width:100%;
+    display: none;
   }
 
   .my-row td::before {
     content: attr(data-label);
     font-weight: bold;
     color: var(--text-color);
-  }
-}
+  } */
+} 
